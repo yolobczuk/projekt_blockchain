@@ -1,0 +1,77 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+
+{%if pesel %}
+    <h1> Dane dotyczące mandatu dla osoby o zaszyfrowanym peselu {{pesel}} dodane </h1><br/><br/>
+
+    <table class="table table-hover table-danger">
+        {% for mandat in tickets%}
+        <tr>
+        <td>{{mandat.id}}. {{mandat.name}} - {{mandat.surname}} - {{mandat.pesel}} - {{mandat.badge}} - {{mandat.amount}} - {{mandat.pen_points}}  </br></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{%else%}
+
+    <h1> Wpisz dane </h1><br/><br/>
+    </br>
+    </br>
+    <div class="shadow p-3 mb-5 bg-body rounded">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label(class="form-label") }}
+        </br>
+        {{ form.name(class="form-text") }}
+        </br>
+
+        {{ form.surname.label(class="form-label") }}
+        </br>
+        {{ form.surname(class="form-text") }}
+        </br>
+
+        {{ form.pesel.label(class="form-label") }}
+        </br>
+        {{ form.pesel(class="form-text") }}
+        </br>
+
+        {{ form.badge.label(class="form-label") }}
+        </br>
+        {{ form.badge(class="form-text") }}
+        </br>
+
+        {{ form.amount.label(class="form-label") }}
+        </br>
+        {{ form.amount(class="form-text") }}
+        </br>
+
+        {{ form.pen_points.label(class="form-label") }}
+        </br>
+        {{ form.pen_points(class="form-text") }}
+        </br>
+
+        </br>
+        {{ form.submit(class="btn btn-secondary") }}
+    </form>
+    </div>
+    </br>
+    <table class="table table-hover table-danger">
+        {% for mandat in tickets%}
+        <tr>
+        <td>{{mandat.id}}. {{mandat.name}} {{mandat.surname}} ({{mandat.pesel}}), {{mandat.badge}} ({{mandat.amount}} - {{mandat.pen_points}})  </br></td>
+        </tr>
+        {% endfor %}
+    </table>
+{%endif%}
+{% endblock %}

@@ -15,25 +15,28 @@ import json
 # Flask is for creating the web
 # app and jsonify is for
 # displaying the blockchain
-from flask import Flask, jsonify
-
+from flask import Flask, render_template, flash, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from forms import HashForm, TicketForm
+import hashlib
 
 class Blockchain:
-
 	# This function is created
 	# to create the very first
 	# block and set its hash to "0"
 	def __init__(self):
 		self.chain = []
-		self.create_block(proof=1, previous_hash='0')
+		self.create_block(proof=1, previous_hash='0',data=['Genesis block'])
 
 	# This function is created
 	# to add further blocks
 	# into the chain
-	def create_block(self, proof, previous_hash):
+	def create_block(self, proof, previous_hash, data):
 		block = {'index': len(self.chain) + 1,
 				'timestamp': str(datetime.datetime.now()),
 				'proof': proof,
+				'data': data,
 				'previous_hash': previous_hash}
 		self.chain.append(block)
 		return block
@@ -84,18 +87,95 @@ class Blockchain:
 
 		return True
 
-
 # Creating the Web
 # App using flask
 app = Flask(__name__)
+app.app_context().push()
 
 # Create the object
 # of the class blockchain
 blockchain = Blockchain()
 
+# Defining database which
+# simulates the blockchain
+app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///tickets.db'
+app.config['SECRET_KEY'] = "sosecret"
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+# Create main page of the site
+@app.route('/')
+def index():
+	return render_template('index.html')
+
+# Add handling of 404 error
+@app.errorhandler(404)
+def page_not_found(e):
+	return render_template("404.html"), 404
+
+# Create page which
+# will add the functionality
+# of printing hash for
+# a given number or string
+@app.route('/hash', methods = ['GET', 'POST'])
+def get_hash():
+	hash = None
+	number = None
+	form = HashForm()
+
+	if form.validate_on_submit():
+
+		number = form.number.data
+		form.number.data = None
+		hash = hashlib.sha256(str(number).encode()).hexdigest()
+		flash("Numer zahashowany pomyślnie!")
+
+	return render_template("hash.html", number = number, hash = hash, form = form)
+# Create page which
+# will serve as main
+# point of the site.
+# It gives the ability
+# to fill out the ticket data
+@app.route('/ticket', methods = ['GET', 'POST'])
+def get_ticket():
+	form = TicketForm()
+	hashed_pesel = None
+
+	if form.validate_on_submit():
+		ticket = Tickets.query.filter_by(badge = form.badge.data).first()
+		if ticket is None: 
+			hashed_pesel = hashlib.sha256(str(form.pesel.data).encode()).hexdigest()
+			hashed_badge = hashlib.sha256(str(form.badge.data).encode()).hexdigest()
+			ticket = Tickets(name = form.name.data, surname = form.surname.data, pesel = hashed_pesel, badge = hashed_badge, amount=form.amount.data, pen_points = form.pen_points.data)
+			db.session.add(ticket)
+			db.session.commit()
+		form.name.data = ''
+		form.surname.data = ''
+		form.pesel.data = ''
+		form.badge.data = ''
+		form.amount.data = ''
+		form.pen_points.data = ''
+
+		flash("Mandat zapisany pomyślnie!")
+	tickets = Tickets.query.order_by(Tickets.date_added)
+	return render_template('ticket.html', form = form, pesel = hashed_pesel, tickets=tickets)  
+
+# Add temporary database model
+# to store data about the tickets
+class Tickets(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	name = db.Column(db.String(40), nullable = False)
+	surname = db.Column(db.String(100), nullable = False)
+	pesel = db.Column(db.String(64), nullable = False)
+	badge = db.Column(db.String(64), nullable = False)
+	amount = db.Column(db.Integer, nullable = False)
+	pen_points = db.Column(db.Integer)
+	date_added = db.Column(db.DateTime, default = datetime.datetime.utcnow)
+
+	def __repr__(self):
+		return '<Name %r>' % self.name
+
 # Mining a new block
-
-
 @app.route('/mine_block', methods=['GET'])
 def mine_block():
 	previous_block = blockchain.print_previous_block()
@@ -136,4 +216,4 @@ def valid():
 
 
 # Run the flask server locally
-app.run(host='127.0.0.1', port=5000)
+# app.run(host='127.0.0.1', port=5000)

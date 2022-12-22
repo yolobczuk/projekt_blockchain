@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+
+{%if hash %}
+    <h1> Hashowanie </h1>
+
+    Dla numeru <strong>{{number}}</strong> hash wynosi <strong>{{hash}}</strong>.
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.number.label(class="form-label") }}
+        </br>
+        {{ form.number(class="form-text") }}
+        </br>
+        </br>
+        {{ form.submit(class="btn btn-secondary") }}
+    </form>
+
+{%else%}
+
+    <h1> Hashowanie </h1><br/><br/>
+    </br>
+    </br>
+    <div class="shadow p-3 mb-5 bg-body rounded">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.number.label(class="form-label") }}
+        </br>
+        {{ form.number(class="form-text") }}
+        </br>
+        </br>
+        {{ form.submit(class="btn btn-secondary") }}
+    </form>
+    </div>
+    </br>
+{%endif%}
+{% endblock %}
