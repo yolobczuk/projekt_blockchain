@@ -1,2 +1,7 @@
 .idea
 venv
+flask_tes
+.ipynb_checkpoints
+__pycache__
+flask_test.py
+main.py

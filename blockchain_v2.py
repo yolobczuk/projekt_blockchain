@@ -27,15 +27,16 @@ class Blockchain:
 	# block and set its hash to "0"
 	def __init__(self):
 		self.chain = []
-		self.create_block(proof=1, previous_hash='0',data=['Genesis block'])
+		self.create_block(proof=1, previous_hash='0', hash = 0, data=['Genesis block'])
 
 	# This function is created
 	# to add further blocks
 	# into the chain
-	def create_block(self, proof, previous_hash, data):
+	def create_block(self, proof, previous_hash, hash, data):
 		block = {'index': len(self.chain) + 1,
 				'timestamp': str(datetime.datetime.now()),
 				'proof': proof,
+				'hash': hash,
 				'data': data,
 				'previous_hash': previous_hash}
 		self.chain.append(block)
@@ -43,24 +44,17 @@ class Blockchain:
 
 	# This function is created
 	# to display the previous block
-	def print_previous_block(self):
+	def get_previous_block(self):
 		return self.chain[-1]
 
 	# This is the function for proof of work
 	# and used to successfully mine the block
-	def proof_of_work(self, previous_proof):
-		new_proof = 1
-		check_proof = False
-
-		while check_proof is False:
-			hash_operation = hashlib.sha256(
-				str(new_proof**2 - previous_proof**2).encode()).hexdigest()
-			if hash_operation[:5] == '00000':
-				check_proof = True
-			else:
-				new_proof += 1
-
-		return new_proof
+	def proof_of_work(self, block):
+		hash = self.hash(block)
+		while not hash.startswith('0' * 3):
+			block['proof'] += 1
+			hash = self.hash(block)
+		return hash, block['proof']
 
 	def hash(self, block):
 		encoded_block = json.dumps(block, sort_keys=True).encode()
@@ -72,15 +66,7 @@ class Blockchain:
 
 		while block_index < len(chain):
 			block = chain[block_index]
-			if block['previous_hash'] != self.hash(previous_block):
-				return False
-
-			previous_proof = previous_block['proof']
-			proof = block['proof']
-			hash_operation = hashlib.sha256(
-				str(proof**2 - previous_proof**2).encode()).hexdigest()
-
-			if hash_operation[:5] != '00000':
+			if block['previous_hash'] != self.hash(previous_block) or not block['hash'].startswith('0' * 3):
 				return False
 			previous_block = block
 			block_index += 1
@@ -137,18 +123,34 @@ def get_hash():
 # It gives the ability
 # to fill out the ticket data
 @app.route('/ticket', methods = ['GET', 'POST'])
-def get_ticket():
+def fill_ticket():
 	form = TicketForm()
-	hashed_pesel = None
-
+	hash = None
 	if form.validate_on_submit():
-		ticket = Tickets.query.filter_by(badge = form.badge.data).first()
+		hashed_pesel = hashlib.sha256(str(form.pesel.data).encode()).hexdigest()
+		hashed_badge = hashlib.sha256(str(form.badge.data).encode()).hexdigest()
+
+		block = Block.query.filter_by(hash = hash).first()
+		if block is None:
+			data = {'name':form.name.data, 'surname':form.surname.data, 'pesel':hashed_pesel, 
+					'badge' : hashed_badge, 'amount':form.amount.data, 'pen_points' : form.pen_points.data,
+					'proof':1}
+
+			previous_block = blockchain.get_previous_block()
+			hash, data['proof'] = blockchain.proof_of_work(data)
+			previous_hash = previous_block['hash']
+			blockchain.create_block(proof=data['proof'], hash = hash, previous_hash = previous_hash, data = data)
+			block = Block(hash = hash, proof = data['proof'], previous_hash = previous_hash)
+			db.session.add(block)
+			db.session.commit()
+
+		ticket = Tickets.query.filter_by(name = form.name.data).first()
 		if ticket is None: 
-			hashed_pesel = hashlib.sha256(str(form.pesel.data).encode()).hexdigest()
-			hashed_badge = hashlib.sha256(str(form.badge.data).encode()).hexdigest()
-			ticket = Tickets(name = form.name.data, surname = form.surname.data, pesel = hashed_pesel, badge = hashed_badge, amount=form.amount.data, pen_points = form.pen_points.data)
+			ticket = Tickets(name = form.name.data, surname = form.surname.data, pesel = hashed_pesel, 
+							 badge = hashed_badge, amount=form.amount.data, pen_points = form.pen_points.data)
 			db.session.add(ticket)
 			db.session.commit()
+		
 		form.name.data = ''
 		form.surname.data = ''
 		form.pesel.data = ''
@@ -158,7 +160,8 @@ def get_ticket():
 
 		flash("Mandat zapisany pomyślnie!")
 	tickets = Tickets.query.order_by(Tickets.date_added)
-	return render_template('ticket.html', form = form, pesel = hashed_pesel, tickets=tickets)  
+	blocks = Block.query.order_by(Block.date_added)
+	return render_template('ticket.html', form = form, tickets=tickets, blocks = blocks)  
 
 # Add temporary database model
 # to store data about the tickets
@@ -174,6 +177,17 @@ class Tickets(db.Model):
 
 	def __repr__(self):
 		return '<Name %r>' % self.name
+
+# Add temporary database model
+# to store blockchain data
+class Block(db.Model):
+	hash = db.Column(db.String(256), primary_key = True)
+	proof = db.Column(db.Integer, nullable = False)
+	previous_hash = db.Column(db.String(256), nullable = False)
+	date_added = db.Column(db.DateTime, default = datetime.datetime.utcnow)
+
+	def __repr__(self):
+		return '<Hash %r>' % self.hash
 
 # Mining a new block
 @app.route('/mine_block', methods=['GET'])
@@ -216,4 +230,4 @@ def valid():
 
 
 # Run the flask server locally
-app.run(host='127.0.0.1', port=5000)
+app.run(host='127.0.0.1', port=8080)
