@@ -6,7 +6,7 @@ import datetime
 # Calculating the hash
 # in order to add digital
 # fingerprints to the blocks
-import hashlib
+# import hashlib
 
 # To store data
 # in our blockchain
@@ -75,7 +75,11 @@ class Blockchain:
 
 # Creating the Web
 # App using flask
+
+
 app = Flask(__name__)
+
+
 app.app_context().push()
 
 # Create the object
@@ -132,7 +136,7 @@ def fill_ticket():
 
 		block = Block.query.filter_by(hash = hash).first()
 		if block is None:
-			data = {'name':form.name.data, 'surname':form.surname.data, 'pesel':hashed_pesel, 
+			data = {'name':form.name.data, 'surname':form.surname.data, 'pesel':hashed_pesel,
 					'badge' : hashed_badge, 'amount':form.amount.data, 'pen_points' : form.pen_points.data,
 					'proof':1}
 
@@ -145,12 +149,12 @@ def fill_ticket():
 			db.session.commit()
 
 		ticket = Tickets.query.filter_by(name = form.name.data).first()
-		if ticket is None: 
-			ticket = Tickets(name = form.name.data, surname = form.surname.data, pesel = hashed_pesel, 
+		if ticket is None:
+			ticket = Tickets(name = form.name.data, surname = form.surname.data, pesel = hashed_pesel,
 							 badge = hashed_badge, amount=form.amount.data, pen_points = form.pen_points.data)
 			db.session.add(ticket)
 			db.session.commit()
-		
+
 		form.name.data = ''
 		form.surname.data = ''
 		form.pesel.data = ''
@@ -161,7 +165,7 @@ def fill_ticket():
 		flash("Mandat zapisany pomyślnie!")
 	tickets = Tickets.query.order_by(Tickets.date_added)
 	blocks = Block.query.order_by(Block.date_added)
-	return render_template('ticket.html', form = form, tickets=tickets, blocks = blocks)  
+	return render_template('ticket.html', form = form, tickets=tickets, blocks = blocks)
 
 # Add temporary database model
 # to store data about the tickets
