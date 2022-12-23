@@ -52,10 +52,15 @@
     </form>
     </div>
     </br>
+<table class="table table-hover table-danger">
+        <tr>
+        <th>ID mandatu | Imię | Nazwisko | PESEL hashcode | Nr odznaki hashcode | kwota mandatu (w zł) - liczba punktów karnych</th>
+        </tr>
+    </table>
     <table class="table table-hover table-danger">
         {% for mandat in tickets%}
         <tr>
-        <td>{{mandat.id}}. {{mandat.name}} {{mandat.surname}} ({{mandat.pesel}}), {{mandat.badge}} ({{mandat.amount}} - {{mandat.pen_points}})  </br></td>
+        <td>{{mandat.id}}. | {{mandat.name}} | {{mandat.surname}} | {{mandat.pesel}} | {{mandat.badge}} | {{mandat.amount}} - {{mandat.pen_points}}  </br></td>
         </tr>
         {% endfor %}
     </table>
