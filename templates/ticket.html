@@ -52,19 +52,16 @@
     </form>
     </div>
     </br>
-<table class="table table-hover table-danger">
+    <table class="table table-hover table-danger">
         <tr>
-        <th>ID mandatu | Imię | Nazwisko | PESEL hashcode | Nr odznaki hashcode | kwota mandatu (w zł) - liczba punktów karnych</th>
+        <th> Hash blocku | Hash poprzedniego bloku | Data dodania bloku do łańcucha | Nonce </th>
         </tr>
     </table>
     <table class="table table-hover table-danger">
-        {% for mandat in tickets%}
+        {% for block in blocks %}
         <tr>
-        <td>{{mandat.id}}. | {{mandat.name}} | {{mandat.surname}} | {{mandat.pesel}} | {{mandat.badge}} | {{mandat.amount}} - {{mandat.pen_points}}  </br></td>
+        <td> <a href="{{url_for('get_data', hash = block.hash)}}">{{block.hash}}</a> | <a href="{{url_for('get_data', hash = block.previous_hash)}}">{{block.previous_hash}}</a> | {{block.date_added}} | {{block.proof}}  </br></td>
         </tr>
         {% endfor %}
     </table>
-    {% for block in blocks %}
-    <p> Hash bloku: {{block.hash}}, poprzedni blok: {{block.previous_hash}}, data: {{block.date_added}} - {{block.proof}} </p>
-    {% endfor %}
 {% endblock %}

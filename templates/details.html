@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+
+    <h2> Dane szczegółowe </h2><br/><br/>
+    <div class="card">
+        <div class="card-header">
+        Dane dla bloku o hashu {{ticket_to_print.hash}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">    
+            <strong> Imię: </strong>{{ticket_to_print.name}}</br>
+            <strong> Nazwisko: </strong> {{ticket_to_print.surname}}</br>
+            <strong> PESEL (hash): </strong> <a href = "{{url_for('get_pesel_data', hash = ticket_to_print.pesel)}}">{{ticket_to_print.pesel}}</a></br>
+            <strong> Numer odznaki policjanta (hash): </strong> <a href = "{{url_for('get_badge_data', hash = ticket_to_print.badge)}}">{{ticket_to_print.badge}}</a></br>
+            <strong> Kwota mandatu: </strong> {{ticket_to_print.amount}}</br>
+            <strong> Liczba punktów karnych: </strong> {{ticket_to_print.pen_points}}</br>
+            <strong> Data dodania mandatu: </strong> {{ticket_to_print.date_added}}</br></p>
+          <a href="{{url_for('fill_ticket')}}" class="btn btn-secondary btn-sm">Powrót</a>
+        </div>
+      </div>
+    </br>
+    </div>
+{% endblock %}
