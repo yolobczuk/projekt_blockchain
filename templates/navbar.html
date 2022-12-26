@@ -7,6 +7,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+          {% if current_user.is_authenticated %}
+
           <li class="nav-item">
             <a class="nav-link" href="{{url_for('get_hash')}}">Sprawdź hash</a>
           </li>
@@ -14,6 +16,23 @@
           <li class="nav-item">
             <a class="nav-link" href="{{url_for('fill_ticket')}}">Dodaj mandat</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('get_all_tickets')}}">Zawartość łańcucha</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('logout')}}">Wyloguj się</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('register')}}">Zarejestruj użytkownika</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('login')}}">Zaloguj się</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>

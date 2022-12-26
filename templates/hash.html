@@ -14,18 +14,15 @@
 {%if hash %}
     <h1> Hashowanie </h1>
 
-    Dla numeru <strong>{{number}}</strong> hash wynosi <strong>{{hash}}</strong>.
+    Dla numeru <strong>{{number}}</strong> hash wynosi <strong>{{hash}}</strong>. </br>
 
-    <form method="POST">
-        {{ form.hidden_tag() }}
+    Czy chcesz przejść do danych szczegółowych dotyczących tego hasha? Jeśli tak, hash dotyczy odznaki czy peselu? </br></br>
 
-        {{ form.number.label(class="form-label") }}
-        </br>
-        {{ form.number(class="form-text") }}
-        </br>
-        </br>
-        {{ form.submit(class="btn btn-secondary") }}
-    </form>
+    <a href="{{url_for('get_badge_data', hash = hash)}}" class="btn btn-secondary btn-sm">Odznaka</a>   <a href="{{url_for('get_pesel_data', hash = hash)}}" class="btn btn-secondary btn-sm">PESEL</a>  
+
+    </br></br>
+
+    <a href="{{url_for('get_hash', hash = None)}}" class="btn btn-secondary btn-sm">Wyczyść formularz</a> 
 
 {%else%}
 

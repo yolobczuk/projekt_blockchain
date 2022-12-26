@@ -11,7 +11,7 @@
 
 {% endfor %}
 
-    <h2> Dane szczegółowe </h2><br/><br/>
+    <h2> Dane szczegółowe, hash bloku: {{hash}} </h2><br/><br/>
     <div class="card">
         <div class="card-header">
         Dane dla bloku o hashu {{ticket_to_print.hash}}
@@ -25,7 +25,7 @@
             <strong> Kwota mandatu: </strong> {{ticket_to_print.amount}}</br>
             <strong> Liczba punktów karnych: </strong> {{ticket_to_print.pen_points}}</br>
             <strong> Data dodania mandatu: </strong> {{ticket_to_print.date_added}}</br></p>
-          <a href="{{url_for('fill_ticket')}}" class="btn btn-secondary btn-sm">Powrót</a>
+          <a href="{{url_for('get_all_tickets')}}" class="btn btn-secondary btn-sm">Powrót</a>
         </div>
       </div>
     </br>

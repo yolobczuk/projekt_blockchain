@@ -10,25 +10,31 @@
     </div>
 
 {% endfor %}
-
+{% if badge %}
     <h2> Dane szczegółowe dla policjanta o odznace {{badge}} </h2><br/><br/>
-    <div class="card">
-        <div class="card-body">
-            <table class="table table-hover table-danger">
-                <tr>
-                <th> Hash PESELu | Kwota mandatu | Liczba punktów karnych | Data dodania mandatu do łańcucha  </th>
-                </tr>
-            </table>
-            <table class="table table-hover table-danger">
-                {% for ticket in ticket_to_print %}
-                <tr>
-                <td> {{ticket.pesel}} | {{ticket.amount}} | {{ticket.pen_points}} | {{ticket.date_added}} </br></td>
-                </tr>
-                {% endfor %}
-            </table>
-          <a href="{{url_for('fill_ticket')}}" class="btn btn-secondary btn-sm">Powrót</a>
-        </div>
-      </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Hash PESELu</th>
+            <th scope="col">Kwota mandatu</th>
+            <th scope="col">Liczba punktów karnych</th>
+            <th scope="col">Data dodania mandatu do łańcucha</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+          <tr>
+            <td>{{ticket.pesel}}</td>
+            <td>{{ticket.amount}}</td>
+            <td>{{ticket.pen_points}}</td>
+            <td>{{ticket.date_added}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a href="{{url_for('get_all_tickets')}}" class="btn btn-secondary btn-sm">Powrót</a>
     </br>
-    </div>
+{%else%}
+    <h2> Brak danych w blockchain dotyczących odznaki o hashu {{hash}} </h2>
+{%endif%}
 {% endblock %}
