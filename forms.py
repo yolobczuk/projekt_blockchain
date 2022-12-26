@@ -1,3 +1,15 @@
+'''
+This file is responsible for creation of forms used in the web app
+flask_wtf is the framework that handles the forms, FlaskForm is the class of the form used in Flask frameword
+wtforms adds some functionalitites to the forms
+
+StringField, SubmitField, IntegerField and PasswordField are all types of the fields in forms
+They accept the string that acts as label for a given field
+
+validators check whether the data written in the form is correct by some of the constraints
+We used two validators - DataRequired (user has to fill the field) and EqualTo (the field contents must be equal to another)
+'''
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
