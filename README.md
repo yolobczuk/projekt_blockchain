@@ -1,6 +1,4 @@
-# Blockchain project
-
-Main goal of this project is to learn how to build a simple blockchain in python.
+# Documentation
 
 ## Initial requirements
 
@@ -14,10 +12,12 @@ In order to initialise the database you have to type in bash terminal following 
 
 # Technical documentation
 
-1. Characteristics of the app
+1. Software characteristics
   - Shortened name: Ticketing system
   - Full name: 
-  - Description 
+  - Description: This app allows to input ticket data into database stored as blockchain.
+Every ticket is stored inside a unique block with unique hashcode what allows to keep every
+ticket unchanged.
 2. Copyright
   - Authors: Jan Jarosz, Mateusz Kacprowicz, Wojciech Sobczuk
   - Licensing:
