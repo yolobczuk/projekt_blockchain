@@ -23,7 +23,47 @@ In order to initialise the database you have to type in bash terminal following 
   - Licensing:
 3. Requirements
 4. Software architecture
-  a. Used IDEs: Visual Studio Code, ver. 1.74.2;
-  b. Used programming languages: Python, ver. 3.9.2
-  c. Used and required libraries (in Python): alembic (1.8.1), autopep8 (2.0.1), certifi (2022.6.15), cffi (1.15.1), charset-normalizer (2.1.0), cleanco (2.2), click (8.1.3), colorama (0.4.6), cryptography (38.0.4), Flask (2.2.2), Flask-Login (0.6.2), Flask-Migrate (4.0.0), Flask-SQLAlchemy (3.0.2), Flask-WTF (1.0.1), greenlet (2.0.1), idna (3.3), importlib-metadata (5.1.0), itsdangerous (2.1.2), Jinja2 (3.1.2), Mako (1.2.4), MarkupSafe (2.1.1) ,numpy (1.23.1), pandas (1.4.3), protobuf= (3.20.1), pycodestyle (2.10.0), pycparser (2.21), Pygments (2.9.0), python-dateutil (2.8.2), pytz (2022.1), requests (2.28.1), sasoptpy (1.0.5), saspy (4.3.1), six (1.16.0), SQLAlchemy (1.4.45), swat (1.11.0), tomli (2.0.1), urllib3 (1.26.10), Werkzeug (2.2.2), WTForms (3.0.1), zipp (3.11.0)
+  - Used IDEs: Visual Studio Code, ver. 1.74.2;
+  - Used programming languages: Python, ver. 3.9.2
+  - Used and required libraries (in Python): 
+      - alembic (1.8.1), 
+      - autopep8 (2.0.1), 
+      - certifi (2022.6.15), 
+      - cffi (1.15.1), 
+      - charset-normalizer (2.1.0), 
+      - cleanco (2.2), 
+      - click (8.1.3), 
+      - colorama (0.4.6), 
+      - cryptography (38.0.4), 
+      - Flask (2.2.2), 
+      - Flask-Login (0.6.2), 
+      - Flask-Migrate (4.0.0), 
+      - Flask-SQLAlchemy (3.0.2), 
+      - Flask-WTF (1.0.1), 
+      - greenlet (2.0.1), 
+      - idna (3.3), 
+      - importlib-metadata (5.1.0), 
+      - itsdangerous (2.1.2), 
+      - Jinja2 (3.1.2), 
+      - Mako (1.2.4), 
+      - MarkupSafe (2.1.1), 
+      - numpy (1.23.1), 
+      - pandas (1.4.3), 
+      - protobuf (3.20.1), 
+      - pycodestyle (2.10.0), 
+      - pycparser (2.21), 
+      - Pygments (2.9.0), 
+      - python-dateutil (2.8.2), 
+      - pytz (2022.1), 
+      - requests (2.28.1), 
+      - sasoptpy (1.0.5), 
+      - saspy (4.3.1), 
+      - six (1.16.0), 
+      - SQLAlchemy (1.4.45), 
+      - swat (1.11.0), 
+      - tomli (2.0.1), 
+      - urllib3 (1.26.10), 
+      - Werkzeug (2.2.2), 
+      - WTForms (3.0.1), 
+      - zipp (3.11.0)
 5. User tests
