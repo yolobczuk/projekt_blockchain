@@ -3,7 +3,7 @@
 ## Initial requirements
 
 * Backend - code that creates block and puts it into the simulated blockchain. It also should allow filling the block with data from Flask form.
-* Flask - simple form that allows to save ticket data into the blockchain (such as name, surname, pesel [Polish unique identification number], value of ticket, penalty points given [if applicable] as well as name, surname and badge number of police officer that gave the ticket). All sensitive data such as names, surnames, PESEL and badge numbers will be hashed. It should give the possibility of showing tickets for given PESEL or badge number hash. It will also be convienient if the site would have the option to show hash for a specific PESEL/badge id. 
+* Flask - simple form that allows to save ticket data into the blockchain (such as name, surname, pesel [Polish unique identification number], value of ticket, penalty points given [if applicable] as well as name, surname and badge number of police officer that gave the ticket). All sensitive data such as names, surnames, PESEL and badge numbers will be encytped under hashcode. It should give the possibility of showing tickets for given PESEL or badge number hash. It will also be convienient if the site would have the option to show hash for a specific PESEL/badge id. 
 * Database - as it is expensive to put the data into a real blockchain network and it is hard to create your own network, my proposal is that we simulate the blockchain network by creating a conventional database that emulates the structure of blockchain.
 
 ## Manual
@@ -14,13 +14,13 @@ In order to initialise the database you have to type in bash terminal following 
 
 1. Software characteristics
   - Shortened name: Ticketing system
-  - Full name: 
+  - Full name: Ticketing system with web application and blokchain storage system
   - Description: This app allows to input ticket data into database stored as blockchain.
 Every ticket is stored inside a unique block with unique hashcode what allows to keep every
-ticket unchanged.
+ticket and it's data unchanged.
 2. Copyright
   - Authors: Jan Jarosz, Mateusz Kacprowicz, Wojciech Sobczuk
-  - Licensing:
+  - Licensing: This work is licensed under CC BY 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/
 3. Requirements
 
   | # | Requirement title | Description | Priority | Category |
@@ -28,7 +28,7 @@ ticket unchanged.
   |   |                   |             |          |          |
 
 4. Software architecture
-  - Used IDEs: Visual Studio Code, ver. 1.74.2;
+  - Used IDEs: Visual Studio Code, ver. 1.74.2; PyCharm 2022.1.3 (Community Edition)
   - Used programming languages: Python, ver. 3.9.2
   - Used and required libraries (in Python): 
       - alembic (1.8.1), 
@@ -71,4 +71,6 @@ ticket unchanged.
       - Werkzeug (2.2.2), 
       - WTForms (3.0.1), 
       - zipp (3.11.0)
+  - Version control system: git version 2.25.1.windows.1
+  - All codes and files are stored on https://github.com/yolobczuk/projekt_blockchain
 5. User tests
