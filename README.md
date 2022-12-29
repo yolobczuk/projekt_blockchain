@@ -22,9 +22,11 @@ ticket unchanged.
   - Authors: Jan Jarosz, Mateusz Kacprowicz, Wojciech Sobczuk
   - Licensing:
 3. Requirements
-| # | Requirement title | Description | Priority | Category |
-|:-:|:-----------------:|:-----------:|:--------:|:--------:|
-|   |                   |             |          |          |
+
+  | # | Requirement title | Description | Priority | Category |
+  |:-:|:-----------------:|:-----------:|:--------:|:--------:|
+  |   |                   |             |          |          |
+
 4. Software architecture
   - Used IDEs: Visual Studio Code, ver. 1.74.2;
   - Used programming languages: Python, ver. 3.9.2
