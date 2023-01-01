@@ -25,7 +25,9 @@ ticket and it's data unchanged.
 
   | # | Requirement title | Description | Priority | Category |
   |:-:|:-----------------:|:-----------:|:--------:|:--------:|
-  |   |                   |             |          |          |
+  | 1 | Secure Infrastructure | The ticketing system service must be impenetrable by a bad actor |  Priority 1 | Non-functional |
+  
+  1 - Secure Infrastructure - The ticketing system service must be impenetrable by a bad actor - Priority 1 - Non-functional
 
 4. Software architecture
   - Used IDEs: Visual Studio Code, ver. 1.74.2; PyCharm 2022.1.3 (Community Edition)
