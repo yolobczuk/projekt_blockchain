@@ -17,18 +17,24 @@ In order to initialise the database you have to type in bash terminal following 
   - Full name: Ticketing system with web application and blokchain storage system
   - Description: This app allows to input ticket data into database stored as blockchain.
 Every ticket is stored inside a unique block with unique hashcode what allows to keep every
-ticket and it's data unchanged.
+ticket and its data unchanged.
 2. Copyright
   - Authors: Jan Jarosz, Mateusz Kacprowicz, Wojciech Sobczuk
   - Licensing: This work is licensed under CC BY 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/
+
 3. Requirements
 
   | # | Requirement title | Description | Priority | Category |
   |:-:|:-----------------:|:-----------:|:--------:|:--------:|
-  | 1 | Secure Infrastructure | The ticketing system service must be impenetrable by a bad actor |  Priority 1 | Non-functional |
+  | 1 | Secure Infrastructure | The ticketing system service must be impenetrable by a bad actor | Priority 1 | Non-functional |
+  | 2 | Accessible Service | The ticketing system service must be available from every device connected to the Internet | Priority 1 | Non-functional |
+  | 3 | User Interface | GUI must be clear and simple in order to ensure work efficacy | Priority 2 | Functional |
+  | 4 | Confidental Data Handling | All sensitive data (such as government IDs) must be encrypted | Priority 1 | Non-functional |
+  | 5 | Log-in Feature | User must be logged-in in order to browse through the application | Priority 1 | Functional |
+  | 6 | Hashing | Application should have the option to convert numbers into hashes | Priority 2 | Functional |
+  | 7 | Blockchain Filtering | Application must have the option to print out all blocks within the blockchain as well as filtering its contents by specific categories such as government ID and badge ID | Priority 1 | Functional |
+  | 8 | Blockchain Filling | Application must have the option to add new tickets to the blockchain | Priority 1 | Functional |
   
-  1 - Secure Infrastructure - The ticketing system service must be impenetrable by a bad actor - Priority 1 - Non-functional
-
 4. Software architecture
   - Used IDEs: Visual Studio Code, ver. 1.74.2; PyCharm 2022.1.3 (Community Edition)
   - Used programming languages: Python, ver. 3.9.2
