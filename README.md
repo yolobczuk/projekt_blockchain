@@ -12,18 +12,18 @@ In order to initialise the database you have to type in bash terminal following 
 
 # Technical documentation
 
-1. Software characteristics
+### Software characteristics
   - Shortened name: Ticketing system
   - Full name: Ticketing system with web application and blokchain storage system
   - Description: This app allows to input ticket data into database stored as blockchain.
 Every ticket is stored inside a unique block with unique hashcode what allows to keep every
 ticket and its data unchanged.
 
-2. Copyright
+### Copyright
   - Authors: Jan Jarosz, Mateusz Kacprowicz, Wojciech Sobczuk
   - Licensing: This work is licensed under CC BY 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/
 
-3. Requirements
+### Requirements
 
   | # | Requirement title | Description | Priority | Category |
   |:-:|:-----------------:|:-----------:|:--------:|:--------:|
@@ -36,7 +36,7 @@ ticket and its data unchanged.
   | 7 | Blockchain Filtering | Application must have the option to print out all blocks within the blockchain as well as filtering its contents by specific categories such as government ID and badge ID | Priority 1 | Functional |
   | 8 | Blockchain Filling | Application must have the option to add new tickets to the blockchain | Priority 1 | Functional |
   
-4. Software architecture
+### Software architecture
   - Used IDEs: Visual Studio Code, ver. 1.74.2; PyCharm 2022.1.3 (Community Edition)
   - Used programming languages: Python, ver. 3.9.2
   - Used and required libraries (in Python): 
@@ -83,4 +83,4 @@ ticket and its data unchanged.
   - Version control system: git version 2.25.1.windows.1
   - All codes and files are stored on https://github.com/yolobczuk/projekt_blockchain
 
-5. User tests
+### User tests
