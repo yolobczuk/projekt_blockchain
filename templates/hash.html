@@ -14,21 +14,21 @@
 {% endfor %}
 <!--If the form is filled then print the hash and give user the opportunity to find information about hashed numbers in databases-->
 {%if hash %}
-    <h1> Hashowanie </h1>
+    <h1> Hashing </h1>
 
-    Dla numeru <strong>{{number}}</strong> hash wynosi <strong>{{hash}}</strong>. </br>
+    For the number <strong>{{number}}</strong> hash equals to <strong>{{hash}}</strong>. </br>
 
-    Czy chcesz przejść do danych szczegółowych dotyczących tego hasha? Jeśli tak, hash dotyczy odznaki czy peselu? </br></br>
+    Do you want to see details about this hash? If yes, is it hash about a badge or PESEL? </br></br>
 
-    <a href="{{url_for('get_badge_data', hash = hash)}}" class="btn btn-secondary btn-sm">Odznaka</a>   <a href="{{url_for('get_pesel_data', hash = hash)}}" class="btn btn-secondary btn-sm">PESEL</a>  
+    <a href="{{url_for('get_badge_data', hash = hash)}}" class="btn btn-secondary btn-sm">Badge</a>   <a href="{{url_for('get_pesel_data', hash = hash)}}" class="btn btn-secondary btn-sm">PESEL</a>
 
     </br></br>
 
-    <a href="{{url_for('get_hash', hash = None)}}" class="btn btn-secondary btn-sm">Wyczyść formularz</a> 
+    <a href="{{url_for('get_hash', hash = None)}}" class="btn btn-secondary btn-sm">Clear the form</a>
 
 {%else%}
 
-    <h1> Hashowanie </h1><br/><br/>
+    <h1> Hashing </h1><br/><br/>
     </br>
     </br>
     <div class="shadow p-3 mb-5 bg-body rounded">
