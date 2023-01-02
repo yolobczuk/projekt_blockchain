@@ -18,6 +18,7 @@ In order to initialise the database you have to type in bash terminal following 
   - Description: This app allows to input ticket data into database stored as blockchain.
 Every ticket is stored inside a unique block with unique hashcode what allows to keep every
 ticket and its data unchanged.
+
 2. Copyright
   - Authors: Jan Jarosz, Mateusz Kacprowicz, Wojciech Sobczuk
   - Licensing: This work is licensed under CC BY 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/
@@ -81,4 +82,5 @@ ticket and its data unchanged.
       - zipp (3.11.0)
   - Version control system: git version 2.25.1.windows.1
   - All codes and files are stored on https://github.com/yolobczuk/projekt_blockchain
+
 5. User tests
