@@ -38,7 +38,7 @@ ticket and its data unchanged.
   
 ### Software architecture
   - Used IDEs: Visual Studio Code, ver. 1.74.2; PyCharm 2022.1.3 (Community Edition)
-  - Used programming languages: Python, ver. 3.9.2
+  - Used programming languages: Python, ver. 3.9.2 (including use of Jinja2 template engine, ver. 3.1.2); HTML, ver. 5 (including use of Boostrap framework, ver. 5.3)
   - Used and required libraries (in Python): 
       - alembic (1.8.1), 
       - autopep8 (2.0.1), 
