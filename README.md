@@ -28,13 +28,16 @@ ticket and its data unchanged.
   | # | Requirement title | Description | Priority | Category |
   |:-:|:-----------------:|:-----------:|:--------:|:--------:|
   | 1 | Secure Infrastructure | The ticketing system service must be impenetrable by a bad actor | Priority 1 | Non-functional |
-  | 2 | Accessible Service | The ticketing system service must be available from every device connected to the Internet | Priority 1 | Non-functional |
-  | 3 | User Interface | GUI must be clear and simple in order to ensure work efficacy | Priority 2 | Functional |
-  | 4 | Confidental Data Handling | All sensitive data (such as government IDs) must be encrypted | Priority 1 | Non-functional |
-  | 5 | Log-in Feature | User must be logged-in in order to browse through the application | Priority 1 | Functional |
-  | 6 | Hashing | Application should have the option to convert numbers into hashes | Priority 2 | Functional |
-  | 7 | Blockchain Filtering | Application must have the option to print out all blocks within the blockchain as well as filtering its contents by specific categories such as government ID and badge ID | Priority 1 | Functional |
-  | 8 | Blockchain Filling | Application must have the option to add new tickets to the blockchain | Priority 1 | Functional |
+  | 2 | Accessible Service | The ticketing system service must be available from every device connected to the Internet | Priority 1 | Functional |
+  | 3 | User Interface | GUI must be clear and simple in order to ensure work efficacy | Priority 2 | Non-functional |
+  | 4 | Confidental Data Handling | All sensitive data (such as government IDs) must be encrypted | Priority 1 | Functional |
+  | 5 | User Register Feature | User must be registerred to be able to log-in | Priority 1 | Functional |
+  | 6 | Log-in Feature | User must be logged-in in order to browse through the application | Priority 1 | Functional |
+  | 7 | Hashing | Application should have the option to convert numbers into hashes | Priority 2 | Functional |
+  | 8 | Blockchain Filtering | Application must have the option to print out all blocks within the blockchain as well as filtering its contents by specific categories such as government ID and badge ID | Priority 1 | Functional |
+  | 9 | Blockchain Filling | Application must have the option to add new tickets to the blockchain | Priority 1 | Functional |
+  | 10 | Password Recovery | User should have a possibility to recover forgotten password | Priority 2 | Functional |
+  | 11 | Deploy Of Appplication To Cloud Services | Application should be deployed to cloud services | Priority 2 | Functional |
   
 ### Software architecture
   - Used IDEs: Visual Studio Code, ver. 1.74.2; PyCharm 2022.1.3 (Community Edition)
