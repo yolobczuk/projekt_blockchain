@@ -6,10 +6,6 @@
 * Flask - simple form that allows to save ticket data into the blockchain (such as name, surname, pesel [Polish unique identification number], value of ticket, penalty points given [if applicable] as well as name, surname and badge number of police officer that gave the ticket). All sensitive data such as names, surnames, PESEL and badge numbers will be encytped under hashcode. It should give the possibility of showing tickets for given PESEL or badge number hash. It will also be convienient if the site would have the option to show hash for a specific PESEL/badge id. 
 * Database - as it is expensive to put the data into a real blockchain network and it is hard to create your own network, my proposal is that we simulate the blockchain network by creating a conventional database that emulates the structure of blockchain.
 
-## Manual
-
-In order to initialise the database you have to type in bash terminal following commands: flask db init, flask db migrate, flask db upgrade
-
 # Technical documentation
 
 ### Software characteristics
@@ -40,8 +36,12 @@ ticket and its data unchanged.
   | 11 | Deploy Of Appplication To Cloud Services | Application should be deployed to cloud services | Priority 2 | Functional |
   
 ### Software architecture
-  - Used IDEs: Visual Studio Code, ver. 1.74.2; PyCharm 2022.1.3 (Community Edition)
-  - Used programming languages: Python, ver. 3.9.2 (including use of Jinja2 template engine, ver. 3.1.2); HTML, ver. 5 (including use of Boostrap framework, ver. 5.3)
+  - Used IDEs: 
+      - Visual Studio Code, ver. 1.74.2,
+      - PyCharm 2022.1.3 (Community Edition).
+  - Used programming languages: 
+      - Python, ver. 3.9.2 (including use of Jinja2 template engine, ver. 3.1.2);,
+      - HTML, ver. 5 (including use of Boostrap framework, ver. 5.3).
   - Used and required libraries (in Python): 
       - alembic (1.8.1), 
       - autopep8 (2.0.1), 
@@ -85,5 +85,24 @@ ticket and its data unchanged.
       - zipp (3.11.0)
   - Version control system: git version 2.25.1.windows.1
   - All codes and files are stored on https://github.com/yolobczuk/projekt_blockchain
+
+### Launch architecture
+In order to launch the application, Python 3.9.2 with compatible IDE and following libraries are required (versions are listed in the Software architecture part):
+  - Flask
+  - Flask-SQLAlchemy
+  - Flask-Migrate
+  - Flask-Login
+  - security module from Werkzeug library
+  - hashlib
+  - datetime
+  - json
+  - Flask-WTF
+  - WTForms (with validator module)
+
+Launching process is different for local and cloud deployment. To access cloud production version, the user must type in '' in the browser search tab. In order to access local production version, the user has to launch the application in the IDE and then navigate to 127.0.0.1:8080 address. In order to access the local debug version of the app, following steps must be taken:
+- in the bash terminal, type in following commands: export FLASK_APP=blockchain.py; export FLASK_DEBUG=True; flask run
+- navigate to 127.0.0.1:5000 address.
+
+If the user doesn't have the database locally, following commands must be typed into the bash terminal: flask db init; flask db migrate; flask db upgrade.
 
 ### User tests
