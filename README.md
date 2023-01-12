@@ -84,6 +84,11 @@ ticket and its data unchanged.
       - WTForms (3.0.1), 
       - zipp (3.11.0)
   - Version control system: git version 2.25.1.windows.1
+  - Cloud Deployment: Google Cloud Platform
+      - Service: Compute Engine - Virtual Machine
+      - Instance: 
+      - HTTP traffic serving: Nginx
+      - Aplication hosting: uWSGI
   - All codes and files are stored on https://github.com/yolobczuk/projekt_blockchain
 
 ### Launch architecture
