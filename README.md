@@ -1,11 +1,5 @@
 # Documentation
 
-## Initial requirements
-
-* Backend - code that creates block and puts it into the simulated blockchain. It also should allow filling the block with data from Flask form.
-* Flask - simple form that allows to save ticket data into the blockchain (such as name, surname, pesel [Polish unique identification number], value of ticket, penalty points given [if applicable] as well as name, surname and badge number of police officer that gave the ticket). All sensitive data such as names, surnames, PESEL and badge numbers will be encytped under hashcode. It should give the possibility of showing tickets for given PESEL or badge number hash. It will also be convienient if the site would have the option to show hash for a specific PESEL/badge id. 
-* Database - as it is expensive to put the data into a real blockchain network and it is hard to create your own network, my proposal is that we simulate the blockchain network by creating a conventional database that emulates the structure of blockchain.
-
 # Technical documentation
 
 ### Software characteristics
@@ -26,14 +20,15 @@ ticket and its data unchanged.
   | 1 | Secure Infrastructure | The ticketing system service must be impenetrable by a bad actor | Priority 1 | Non-functional |
   | 2 | Accessible Service | The ticketing system service must be available from every device connected to the Internet | Priority 1 | Functional |
   | 3 | User Interface | GUI must be clear and simple in order to ensure work efficacy | Priority 2 | Non-functional |
-  | 4 | Confidental Data Handling | All sensitive data (such as government IDs) must be encrypted | Priority 1 | Functional |
-  | 5 | User Register Feature | User must be registerred to be able to log-in | Priority 1 | Functional |
+  | 4 | Confidential Data Handling | All sensitive data (such as government IDs) must be encrypted | Priority 1 | Functional |
+  | 5 | User Register Feature | User must be registered to be able to log-in | Priority 1 | Functional |
   | 6 | Log-in Feature | User must be logged-in in order to browse through the application | Priority 1 | Functional |
-  | 7 | Hashing | Application should have the option to convert numbers into hashes | Priority 2 | Functional |
-  | 8 | Blockchain Filtering | Application must have the option to print out all blocks within the blockchain as well as filtering its contents by specific categories such as government ID and badge ID | Priority 1 | Functional |
+  | 7 | Hashcoding | Application should have the option to convert numbers or text into hashcodes | Priority 2 | Functional |
+  | 8 | Blockchain Filtering | Application must have the option to print out all blocks within the blockchain as well as filtering its contents by specific categories | Priority 1 | Functional |
   | 9 | Blockchain Filling | Application must have the option to add new tickets to the blockchain | Priority 1 | Functional |
   | 10 | Password Recovery | User should have a possibility to recover forgotten password | Priority 2 | Functional |
-  | 11 | Deploy Of Appplication To Cloud Services | Application should be deployed to cloud services | Priority 2 | Functional |
+  | 11 | Deploy Of Application To Cloud Services | Application should be deployed to cloud services | Priority 2 | Functional |
+  | 12 | Log out feature | User must have a possibility to log out from the application | Priority 1 | Functional |
   
 ### Software architecture
   - Used IDEs: 
@@ -111,3 +106,5 @@ Launching process is different for local and cloud deployment. To access cloud p
 If the user doesn't have the database locally, following commands must be typed into the bash terminal: flask db init; flask db migrate; flask db upgrade.
 
 ### User tests
+All user tests can be found in the folder named `User tests`. Each `PDF` file contains one test related to one od the
+requirements from the list above.

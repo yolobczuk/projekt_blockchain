@@ -16,14 +16,14 @@
 <!--Check whether the PESEL number is in database-->
 {% if pesel %}
 
-    <h2> Dane szczegółowe dla osoby o PESELu {{pesel}} </h2><br/><br/>
+    <h2> Details of person with PESEL {{pesel}} </h2><br/><br/>
     <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Hash odznaki policjanta </th>
-            <th scope="col">Kwota mandatu</th>
-            <th scope="col">Liczba punktów karnych</th>
-            <th scope="col">Data dodania mandatu do łańcucha</th>
+            <th scope="col">Badge hashcode</th>
+            <th scope="col">Fine amount</th>
+            <th scope="col">Penalty points</th>
+            <th scope="col">Date of ticket addition to the blockchain</th>
           </tr>
         </thead>
         <tbody>
@@ -37,9 +37,10 @@
           {% endfor %}
         </tbody>
       </table>
-      <a href="{{url_for('get_all_tickets')}}" class="btn btn-secondary btn-sm">Powrót</a>
+      <a href="{{url_for('get_all_tickets')}}" class="btn btn-secondary btn-sm">Return</a>
 
 {%else%}
-    <h2> Brak danych w blockchain dotyczących PESELu o hashu {{hash}} </h2>
+    <h2> No data in database refers to PESEL with hashcode {{hash}} </h2>
+    <a href="{{url_for('get_hash')}}" class="btn btn-secondary btn-sm">Return</a>
 {%endif%}
 {% endblock %}
