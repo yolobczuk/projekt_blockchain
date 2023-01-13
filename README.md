@@ -86,7 +86,7 @@ ticket and its data unchanged.
   - Version control system: git version 2.25.1.windows.1
   - Cloud Deployment: Google Cloud Platform
       - Service: Compute Engine - Virtual Machine
-      - Instance: 
+      - Instance: E2 - 4Gb memory - SDD Persistent disk 10 Gb - Ubuntu 18.04 LTS
       - HTTP traffic serving: Nginx
       - Aplication hosting: uWSGI
   - All codes and files are stored on https://github.com/yolobczuk/projekt_blockchain
