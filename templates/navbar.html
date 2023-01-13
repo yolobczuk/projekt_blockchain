@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{url_for('index')}}">Strona główna</a>
+      <a class="navbar-brand" href="{{url_for('index')}}">Home page</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -12,27 +12,27 @@
           {% if current_user.is_authenticated %}
 
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('get_hash')}}">Sprawdź hash</a>
+            <a class="nav-link" href="{{url_for('get_hash')}}">Check the hash</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('fill_ticket')}}">Dodaj mandat</a>
+            <a class="nav-link" href="{{url_for('fill_ticket')}}">Add a ticket</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('get_all_tickets')}}">Zawartość łańcucha</a>
+            <a class="nav-link" href="{{url_for('get_all_tickets')}}">Content of the chain</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('logout')}}">Wyloguj się</a>
+            <a class="nav-link" href="{{url_for('logout')}}">Log out</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('register')}}">Zarejestruj użytkownika</a>
+            <a class="nav-link" href="{{url_for('register')}}">Register user</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('login')}}">Zaloguj się</a>
+            <a class="nav-link" href="{{url_for('login')}}">Log in</a>
           </li>
           {% endif %}
         </ul>

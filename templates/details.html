@@ -13,21 +13,21 @@
 
 {% endfor %}
 
-    <h2> Dane szczegółowe, hash bloku: {{hash}} </h2><br/><br/>
+    <h2> Details of the block with hashcode: {{hash}} </h2><br/><br/>
     <div class="card">
         <div class="card-header">
-        Dane dla bloku o hashu {{ticket_to_print.hash}}
+        Details of the block with hashcode {{ticket_to_print.hash}}
         </div>
         <div class="card-body">
           <p class="card-text">    
-            <strong> Imię: </strong>{{ticket_to_print.name}}</br>
-            <strong> Nazwisko: </strong> {{ticket_to_print.surname}}</br>
-            <strong> PESEL (hash): </strong> <a href = "{{url_for('get_pesel_data', hash = ticket_to_print.pesel)}}">{{ticket_to_print.pesel}}</a></br>
-            <strong> Numer odznaki policjanta (hash): </strong> <a href = "{{url_for('get_badge_data', hash = ticket_to_print.badge)}}">{{ticket_to_print.badge}}</a></br>
-            <strong> Kwota mandatu: </strong> {{ticket_to_print.amount}}</br>
-            <strong> Liczba punktów karnych: </strong> {{ticket_to_print.pen_points}}</br>
-            <strong> Data dodania mandatu: </strong> {{ticket_to_print.date_added}}</br></p>
-          <a href="{{url_for('get_all_tickets')}}" class="btn btn-secondary btn-sm">Powrót</a>
+            <strong> Name: </strong>{{ticket_to_print.name}}</br>
+            <strong> Surname: </strong> {{ticket_to_print.surname}}</br>
+            <strong> PESEL (hashcode): </strong> <a href = "{{url_for('get_pesel_data', hash = ticket_to_print.pesel)}}">{{ticket_to_print.pesel}}</a></br>
+            <strong> Number of the badge (hash): </strong> <a href = "{{url_for('get_badge_data', hash = ticket_to_print.badge)}}">{{ticket_to_print.badge}}</a></br>
+            <strong> Fine amount (in PLN): </strong> {{ticket_to_print.amount}}</br>
+            <strong> Number of penalty points: </strong> {{ticket_to_print.pen_points}}</br>
+            <strong> Date of ticket addition: </strong> {{ticket_to_print.date_added}}</br></p>
+          <a href="{{url_for('get_all_tickets')}}" class="btn btn-secondary btn-sm">Return</a>
         </div>
       </div>
     </br>

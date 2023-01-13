@@ -14,14 +14,14 @@
 {% endfor %}
 <!--Check whether the badge number is in database-->
 {% if badge %}
-    <h2> Dane szczegółowe dla policjanta o odznace {{badge}} </h2><br/><br/>
+    <h2> Details about policeman with badge number {{badge}} </h2><br/><br/>
     <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Hash PESELu</th>
-            <th scope="col">Kwota mandatu</th>
-            <th scope="col">Liczba punktów karnych</th>
-            <th scope="col">Data dodania mandatu do łańcucha</th>
+            <th scope="col">PESEL hashcode</th>
+            <th scope="col">Fine amount (PLN)</th>
+            <th scope="col">Number of penalty points</th>
+            <th scope="col">Date of ticket addition to the blockchain</th>
           </tr>
         </thead>
         <tbody>
@@ -35,9 +35,10 @@
           {% endfor %}
         </tbody>
       </table>
-      <a href="{{url_for('get_all_tickets')}}" class="btn btn-secondary btn-sm">Powrót</a>
+      <a href="{{url_for('get_all_tickets')}}" class="btn btn-secondary btn-sm">Return</a>
     </br>
 {%else%}
-    <h2> Brak danych w blockchain dotyczących odznaki o hashu {{hash}} </h2>
+    <h2> No data in database refers to badge with hashcode {{hash}} </h2>
+    <a href="{{url_for('get_hash')}}" class="btn btn-secondary btn-sm">Return</a>
 {%endif%}
 {% endblock %}

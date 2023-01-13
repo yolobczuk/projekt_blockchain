@@ -15,25 +15,25 @@ from wtforms import StringField, SubmitField, IntegerField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
 
 class HashForm(FlaskForm):
-	number = StringField("Podaj ciąg znaków do hashowania", validators=[DataRequired()])
-	submit = SubmitField("Wydrukuj hash")
+	number = StringField("Insert text/number which you would like to hashcode", validators=[DataRequired()])
+	submit = SubmitField("Print hashcode")
 
 class TicketForm(FlaskForm):
-	name = StringField("Podaj imię osoby, dla której wystawiasz mandat", validators=[DataRequired()])
-	surname = StringField("Podaj nazwisko osoby, dla której wystawiasz mandat", validators=[DataRequired()])
-	pesel = IntegerField("Podaj pesel osoby, dla której wystawiasz mandat", validators=[DataRequired()]) #dodać walidator po długości
-	badge = IntegerField("Podaj numer odznaki funkcjonariusza spisującego mandat", validators=[DataRequired()])
-	amount = IntegerField("Podaj wartość mandatu", validators=[DataRequired()])
-	pen_points = IntegerField("Podaj liczbę przyznanych punktów karnych", validators=[])
-	submit = SubmitField("Zapisz mandat")
+	name = StringField("Name of the person who received a ticket", validators=[DataRequired()])
+	surname = StringField("Surname of the person who received a ticket", validators=[DataRequired()])
+	pesel = IntegerField("PESEL of the person who received a ticket", validators=[DataRequired()]) #dodać walidator po długości
+	badge = IntegerField("Badge number of the policeman who gave a ticket", validators=[DataRequired()])
+	amount = IntegerField("Fine amount", validators=[DataRequired()])
+	pen_points = IntegerField("Penalty points given (PLN)", validators=[])
+	submit = SubmitField("Save ticket")
 
 class LoginForm(FlaskForm):
-	username = StringField("Podaj identyfikator użytkownika", validators=[DataRequired()])
-	password= PasswordField("Podaj hasło", validators=[DataRequired()])
-	submit = SubmitField("Zaloguj")
+	username = StringField("User name", validators=[DataRequired()])
+	password= PasswordField("Password", validators=[DataRequired()])
+	submit = SubmitField("Log in")
 
 class UserForm(FlaskForm):
-	username = StringField("Podaj identyfikator", validators=[DataRequired()])
-	password_hash = PasswordField("Podaj hasło", validators=[DataRequired(), EqualTo('password_hash2', message='Hasła muszą być identyczne')])
-	password_hash2 = PasswordField("Podaj hasło ponownie", validators=[DataRequired()])
-	submit = SubmitField("Zarejestruj")
+	username = StringField("User name", validators=[DataRequired()])
+	password_hash = PasswordField("Password", validators=[DataRequired(), EqualTo('password_hash2', message='Hasła muszą być identyczne')])
+	password_hash2 = PasswordField("Retype password", validators=[DataRequired()])
+	submit = SubmitField("Register")

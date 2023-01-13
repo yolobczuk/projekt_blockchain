@@ -167,12 +167,12 @@ def login():
 			# Checking whether the password matches the one in the database
 			if check_password_hash(user.password_hash, form.password.data):
 				login_user(user)
-				flash("Logowanie przebiegło pomyślnie")
+				flash("User logged in successfully.")
 				return redirect(url_for('index'))
 			else:
-				flash("Złe hasło, spróbuj ponownie")
+				flash("Wrong password, please try again.")
 		else:
-			flash("Ten użytkownik nie istnieje, spróbuj ponownie")
+			flash("This user does not exist. Please register first.")
 	return render_template('login.html', form = form)
 
 # This function adds registering feature to the app
@@ -195,7 +195,7 @@ def register():
 		form.username.data = ''
 		form.password_hash.data = ''
 
-		flash("Użytkownik zarejestrowany pomyślnie")
+		flash("User registered successfully")
 	return render_template('register.html', form = form)   
 
 # This function adds log-out feature to the app
@@ -203,7 +203,7 @@ def register():
 @login_required
 def logout():
 	logout_user()
-	flash("Użytkownik wylogowany pomyślnie")
+	flash("User logged out successfully")
 	return redirect(url_for('login'))
 
 # This function creates welcome page of the site
@@ -229,7 +229,7 @@ def get_hash():
 		number = form.number.data
 		form.number.data = None
 		hash = hashlib.sha256(str(number).encode()).hexdigest()
-		flash("Numer zahashowany pomyślnie!")
+		flash("Content has been hashed successfully!")
 
 	return render_template("hash.html", number = number, hash = hash, form = form)
 
@@ -257,7 +257,7 @@ def fill_ticket():
 			# Create block
 			data = {'name':form.name.data, 'surname':form.surname.data, 'pesel':hashed_pesel,
 					'badge' : hashed_badge, 'amount':form.amount.data, 'pen_points' : form.pen_points.data,
-					'proof':1}
+					'proof':1,  'timestamp':str(datetime.datetime.now())}
 
 			previous_block = blockchain.get_previous_block()
 			hash, data['proof'] = blockchain.proof_of_work(data)
@@ -288,7 +288,7 @@ def fill_ticket():
 		form.amount.data = ''
 		form.pen_points.data = ''
 
-		flash("Mandat zapisany pomyślnie!")
+		flash("Ticket saved successfully!")
 	
 	# Get both ticket and block database in order to print them on the page
 	tickets = Tickets.query.order_by(Tickets.date_added)
