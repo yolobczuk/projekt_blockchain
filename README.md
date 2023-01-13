@@ -87,8 +87,8 @@ ticket and its data unchanged.
   - Cloud Deployment: Google Cloud Platform
       - Service: Compute Engine - Virtual Machine
       - Instance: E2 - 4Gb memory - SDD Persistent disk 10 Gb - Ubuntu 18.04 LTS
-      - HTTP traffic serving: Nginx
-      - Aplication hosting: uWSGI
+      - HTTP traffic serving: Nginx - nginx/1.14.0 (Ubuntu)
+      - Aplication hosting: uWSGI - 2.0.21
   - All codes and files are stored on https://github.com/yolobczuk/projekt_blockchain
 
 ### Launch architecture
