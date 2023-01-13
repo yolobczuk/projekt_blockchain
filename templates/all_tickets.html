@@ -1,0 +1,39 @@
+<!--This site prints the detailed data for all tickets-->
+
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+    <h1> Zawartość blockchain </h1><br/><br/>
+    </br>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Hash bloku</th>
+            <th scope="col">Hash poprzedniego bloku</th>
+            <th scope="col">Data dodania bloku do łańcucha</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for block in blocks %}
+          <tr>
+            <td><a href="{{url_for('get_data', hash = block.hash)}}">{{block.hash}}</a></td>
+            {% if block.previous_hash == '0' %}
+              <td>{{block.previous_hash}}</td>
+            {% else %}
+              <td><a href="{{url_for('get_data', hash = block.previous_hash)}}">{{block.previous_hash}}</a></td>
+            {% endif %}
+            <td>{{block.date_added}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

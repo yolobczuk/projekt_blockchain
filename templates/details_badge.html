@@ -1,0 +1,43 @@
+<!--This site prints the detailed data for a given badge number hash-->
+
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+<!--Check whether the badge number is in database-->
+{% if badge %}
+    <h2> Dane szczegółowe dla policjanta o odznace {{badge}} </h2><br/><br/>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Hash PESELu</th>
+            <th scope="col">Kwota mandatu</th>
+            <th scope="col">Liczba punktów karnych</th>
+            <th scope="col">Data dodania mandatu do łańcucha</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+          <tr>
+            <td>{{ticket.pesel}}</td>
+            <td>{{ticket.amount}}</td>
+            <td>{{ticket.pen_points}}</td>
+            <td>{{ticket.date_added}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a href="{{url_for('get_all_tickets')}}" class="btn btn-secondary btn-sm">Powrót</a>
+    </br>
+{%else%}
+    <h2> Brak danych w blockchain dotyczących odznaki o hashu {{hash}} </h2>
+{%endif%}
+{% endblock %}
