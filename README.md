@@ -102,11 +102,11 @@ In order to launch the application, Python 3.9.2 with compatible IDE and followi
 Launching process is different for local and cloud deployment. To access cloud production version, the user must type in `
 34.116.211.46` in the browser search tab. Please note that this version might not work all the time and application might be faulty. Cloud version of the app is still under construction.
 
-In order to access local production version, the user has to launch the application in the IDE and then navigate to 127.0.0.1:8080 address. In order to access the local debug version of the app, following steps must be taken:
-- in the bash terminal, type in following commands: export FLASK_APP=blockchain.py; export FLASK_DEBUG=True; flask run
-- navigate to 127.0.0.1:5000 address.
+In order to access local production version, the user has to launch the application in the IDE and then navigate to `127.0.0.1:8080` address. In order to access the local debug version of the app, following steps must be taken:
+- in the bash terminal, type in following commands: `export FLASK_APP=blockchain.py`; `export FLASK_DEBUG=True`; `flask run` (for windows it might be needed to change the word `export` to `SET`)
+- navigate to `127.0.0.1:5000` address.
 
-If the user doesn't have the database locally, following commands must be typed into the bash terminal: flask db init; flask db migrate; flask db upgrade.
+If the user doesn't have the database locally, following commands must be typed into the bash terminal: `flask db init`; `flask db migrate`; `flask db upgrade` (for windows `flask --app blockchain.py db init`; `flask --app blockchain.py db migrate`; `flask --app blockchain.py db upgrade`)
 
 ### User tests
 All user tests can be found in the folder named `User tests`. Each `PDF` file contains one test related to one of the
