@@ -10,7 +10,10 @@ Every ticket is stored inside a unique block with unique hashcode what allows to
 ticket and its data unchanged.
 
 ### Copyright
-  - Authors: Jan Jarosz, Mateusz Kacprowicz, Wojciech Sobczuk
+  - Authors:
+    - Jan Jarosz (https://github.com/JanJarosz),
+    - Mateusz Kacprowicz (https://github.com/M-Kacprowicz),
+    - Wojciech Sobczuk (https://github.com/yolobczuk)
   - Licensing: This work is licensed under CC BY 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/
 
 ### Requirements
